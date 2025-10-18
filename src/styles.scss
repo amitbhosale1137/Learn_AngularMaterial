@@ -1,116 +1,152 @@
 @use '@angular/material' as mat;
 @use 'theme-colors' as theme;
 
-html{
+html {
 
-	color-scheme: light;
-	@include mat.theme((color: theme.$primary-palette));
-    @include mat.button-overrides((filled-container-shape: 5px,
-				text-container-shape: 5px,
-				outlined-container-shape: 5px,
-				protected-container-shape: 5px));
+  color-scheme: light;
+  @include mat.theme((color: theme.$primary-palette));
+  @include mat.button-overrides((filled-container-shape: 5px,
+      text-container-shape: 5px,
+      outlined-container-shape: 5px,
+      protected-container-shape: 5px));
 
-    @media (prefers-contrast: more) {
-		@include theme.high-contrast-overrides('light');
-    }
+  @media (prefers-contrast: more) {
+    @include theme.high-contrast-overrides('light');
+  }
 }
 
+.success-snackbar {
+  @include mat.snack-bar-overrides((
+    container-color: #28a745, 
+    button-color: white
+    ));
+}
+
+.danger-snackbar {
+  @include mat.snack-bar-overrides((
+    container-color: #dc3545, 
+      button-color: white
+    ));
+}
+
+.warning-snackbar {
+  @include mat.snack-bar-overrides((
+    container-color: #ffc107, 
+      button-color:#343a40
+    ));
+}
+
+.info-snackbar {
+  @include mat.snack-bar-overrides((
+    container-color: #17a2b8,
+      button-color: white
+    ));
+}
+
+.dark-snackbar {
+  @include mat.snack-bar-overrides((
+    container-color: #343a40, 
+      button-color: white
+    ));
+}
+
+
 .tertiary {
-	@include mat.theme((color: theme.$tertiary-palette));
-	@include mat.button-overrides((filled-container-shape: 5px,
-				text-container-shape: 5px,
-				outlined-container-shape: 5px,
-				protected-container-shape: 5px));
+  @include mat.theme((color: theme.$tertiary-palette));
+  @include mat.button-overrides((filled-container-shape: 5px,
+      text-container-shape: 5px,
+      outlined-container-shape: 5px,
+      protected-container-shape: 5px));
+
+
 }
 
 .secondary {
-	@include mat.theme((color: theme.$secondary-palette));
-	@include mat.button-overrides((filled-container-shape: 5px,
-				text-container-shape: 5px,
-				outlined-container-shape: 5px,
-				protected-container-shape: 5px));
+  @include mat.theme((color: theme.$secondary-palette));
+  @include mat.button-overrides((filled-container-shape: 5px,
+      text-container-shape: 5px,
+      outlined-container-shape: 5px,
+      protected-container-shape: 5px));
 }
 
 .error {
-	@include mat.theme((color: theme.$error-palette));
-	@include mat.button-overrides((filled-container-shape: 5px,
-				text-container-shape: 5px,
-				outlined-container-shape: 5px,
-				protected-container-shape: 5px));
+  @include mat.theme((color: theme.$error-palette));
+  @include mat.button-overrides((filled-container-shape: 5px,
+      text-container-shape: 5px,
+      outlined-container-shape: 5px,
+      protected-container-shape: 5px));
 }
 
 .text-error {
-	color: var(--mat-sys-error);
+  color: var(--mat-sys-error);
 }
 
-.theme-builder{
-    @include mat.theme-overrides((
-    primary: #005cbb,
-    on-primary: #ffffff,
-    primary-container: #d7e2ff,
-    on-primary-container: #001b3f,
-    inverse-primary: #abc7ff,
-    primary-fixed: #d7e2ff,
-    primary-fixed-dim: #abc7ff,
-    on-primary-fixed: #001b3f,
-    on-primary-fixed-variant: #00458f,
-    secondary: #4a5f84,
-    on-secondary: #ffffff,
-    secondary-container: #d7e3ff,
-    on-secondary-container: #011b3d,
-    secondary-fixed: #d7e3ff,
-    secondary-fixed-dim: #b2c7f2,
-    on-secondary-fixed: #011b3d,
-    on-secondary-fixed-variant: #32476b,
-    tertiary: #7d4a8f,
-    on-tertiary: #ffffff,
-    tertiary-container: #f9d8ff,
-    on-tertiary-container: #320046,
-    tertiary-fixed: #f9d8ff,
-    tertiary-fixed-dim: #edb1ff,
-    on-tertiary-fixed: #320046,
-    on-tertiary-fixed-variant: #633276,
-    background: #fcf8f9,
-    on-background: #1c1b1c,
-    surface: #fcf8f9,
-    surface-dim: #dcd9d9,
-    surface-bright: #fcf8f9,
-    surface-container-lowest: #ffffff,
-    surface-container-low: #f6f3f3,
-    surface-container: #f1eded,
-    surface-container-high: #ebe7e7,
-    surface-container-highest: #e5e2e2,
-    on-surface: #1c1b1c,
-    shadow: #000000,
-    scrim: #000000,
-    surface-tint: #5c5e66,
-    inverse-surface: #313031,
-    inverse-on-surface: #f3f0f0,
-    outline: #76777c,
-    outline-variant: #c6c6cc,
-    neutral: #797777,
-    neutral10: #1c1b1c,
-    error: #ba1a1a,
-    error-container: #ffdad6,
-    on-error: #ffffff,
-    on-error-container: #410002,
-    surface-variant: #e2e2e8,
-    on-surface-variant: #45474b,
-    neutral-variant: #76777c,
-    neutral-variant20: #2f3035,
-    inverse-secondary: #b2c7f2,
-    inverse-tertiary: #edb1ff,
-  ));
+.theme-builder {
+  @include mat.theme-overrides((primary: #005cbb,
+      on-primary: #ffffff,
+      primary-container: #d7e2ff,
+      on-primary-container: #001b3f,
+      inverse-primary: #abc7ff,
+      primary-fixed: #d7e2ff,
+      primary-fixed-dim: #abc7ff,
+      on-primary-fixed: #001b3f,
+      on-primary-fixed-variant: #00458f,
+      secondary: #4a5f84,
+      on-secondary: #ffffff,
+      secondary-container: #d7e3ff,
+      on-secondary-container: #011b3d,
+      secondary-fixed: #d7e3ff,
+      secondary-fixed-dim: #b2c7f2,
+      on-secondary-fixed: #011b3d,
+      on-secondary-fixed-variant: #32476b,
+      tertiary: #7d4a8f,
+      on-tertiary: #ffffff,
+      tertiary-container: #f9d8ff,
+      on-tertiary-container: #320046,
+      tertiary-fixed: #f9d8ff,
+      tertiary-fixed-dim: #edb1ff,
+      on-tertiary-fixed: #320046,
+      on-tertiary-fixed-variant: #633276,
+      background: #fcf8f9,
+      on-background: #1c1b1c,
+      surface: #fcf8f9,
+      surface-dim: #dcd9d9,
+      surface-bright: #fcf8f9,
+      surface-container-lowest: #ffffff,
+      surface-container-low: #f6f3f3,
+      surface-container: #f1eded,
+      surface-container-high: #ebe7e7,
+      surface-container-highest: #e5e2e2,
+      on-surface: #1c1b1c,
+      shadow: #000000,
+      scrim: #000000,
+      surface-tint: #5c5e66,
+      inverse-surface: #313031,
+      inverse-on-surface: #f3f0f0,
+      outline: #76777c,
+      outline-variant: #c6c6cc,
+      neutral: #797777,
+      neutral10: #1c1b1c,
+      error: #ba1a1a,
+      error-container: #ffdad6,
+      on-error: #ffffff,
+      on-error-container: #410002,
+      surface-variant: #e2e2e8,
+      on-surface-variant: #45474b,
+      neutral-variant: #76777c,
+      neutral-variant20: #2f3035,
+      inverse-secondary: #b2c7f2,
+      inverse-tertiary: #edb1ff,
+    ));
 }
 
 
 html,
 body {
-	height: 100%;
+  height: 100%;
 }
 
 body {
-	margin: 0;
-	font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
 }
-
