@@ -10,10 +10,9 @@ import { ApiService } from '../services/api.service';
   selector: 'app-employee',
   imports: [CommonModule, MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule],
   templateUrl: './employee.html',
-  styleUrl: './employee.scss'
+  styleUrl: './employee.scss',
 })
 export class EmployeeComponent implements OnInit {
-
   dataSource = new MatTableDataSource<any>();
   columnsToDisplay: string[] = ['id', 'title', 'body'];
 
@@ -23,35 +22,19 @@ export class EmployeeComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-
-    this.getUsers()
-
-    // this.apiService.getData().subscribe(data => {
-
-    //   .map(user => ({
-    //     id: user.id,
-    //     name: user.name,
-    //     email: user.email
-    //   }));
-    //   this.dataSource.data = data;
-    //   this.dataSource.paginator = this.paginator;
-    //   this.dataSource.sort = this.sort;
-    // });
+    this.getUsers();
   }
 
-  getUsers(){
+  getUsers() {
     this.apiService.getData().subscribe({
-      next:(res)=>{
-        debugger;
+      next: (res) => {
         this.dataSource.data = res;
-       this.dataSource.paginator = this.paginator;
-      this.dataSource.sort = this.sort;
+        this.dataSource.paginator = this.paginator;
+        this.dataSource.sort = this.sort;
       },
-      error(){
-        alert('ssdsdsd')
-      }
-    })
+      error() {
+        alert('Error while loading Api');
+      },
+    });
   }
-  
-
 }
