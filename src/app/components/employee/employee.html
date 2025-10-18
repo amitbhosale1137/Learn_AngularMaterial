@@ -1,0 +1,34 @@
+<div class="container">
+    <mat-card>
+        <mat-card-header>
+            <h2>User List</h2>
+        </mat-card-header>
+        <table mat-table [dataSource]="dataSource" matSort>
+            <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID </th>
+                <td mat-cell *matCellDef="let product"> {{product.id}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="title">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Title </th>
+                <td mat-cell *matCellDef="let product"> {{product.title}} </td>
+            </ng-container>
+
+            <ng-container matColumnDef="body">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header>Content</th>
+                <td mat-cell *matCellDef="let product"> {{product.body}} </td>
+            </ng-container>
+
+            <!-- <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                <td mat-cell *matCellDef="let product"> {{product.email}} </td>
+            </ng-container> -->
+
+            <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+            <tr mat-row *matRowDef="let rowData; columns: columnsToDisplay"></tr>
+        </table>
+
+        <mat-paginator showFirstLastButtons [length]="15" [pageSize]="10" [pageSizeOptions]="[5, 10]" aria-label="Select page">
+        </mat-paginator>
+    </mat-card>
+    <div>
