@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { ThemePalette } from '@angular/material/core';
+import { MatProgressSpinnerModule, ProgressSpinnerMode } from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-spinner',
@@ -8,5 +9,10 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
   styleUrl: './spinner.scss'
 })
 export class Spinner {
+
+  title ='spinner';
+  color: ThemePalette = 'warn';
+  mode: ProgressSpinnerMode = 'indeterminate';
+  value = 100
 
 }
