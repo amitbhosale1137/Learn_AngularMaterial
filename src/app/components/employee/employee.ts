@@ -9,6 +9,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployeeDialogComponent } from '../../Shared/employee-dialog/employee-dialog';
 import { NotificationService } from '../../services/notification.service';
+import { NavComponent } from "../nav/nav";
 
 @Component({
   selector: 'app-employee',
@@ -18,7 +19,8 @@ import { NotificationService } from '../../services/notification.service';
     ReusableTableComponent,
     MatButtonModule,
     MatIconModule,
-  ],
+    NavComponent
+],
   templateUrl: './employee.html',
   styleUrl: './employee.scss',
 })
