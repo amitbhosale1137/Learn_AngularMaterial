@@ -1,0 +1,42 @@
+<!-- Navigation Bar -->
+<mat-toolbar class="navbar">
+  <div class="navbar-brand">
+    <mat-icon class="logo">dashboard</mat-icon>
+    <span class="app-title">Admin Dashboard</span>
+  </div>
+
+  <div class="navbar-menu">
+    @for (item of menuItems; track item) {
+    <button mat-button class="nav-item" [matMenuTriggerFor]="item.submenu ? submenu : null"
+      [routerLink]="!item.submenu ? item.route : null" (mouseenter)="currentSubmenu = item.submenu">
+      <mat-icon>{{ item.icon }}</mat-icon>
+      <span class="nav-label">{{ item.label }}</span>
+      @if (item.submenu) {
+      <mat-icon class="submenu-arrow">arrow_drop_down</mat-icon>
+      }
+    </button>
+    }
+
+    <!-- Single Submenu Template -->
+    <mat-menu #submenu="matMenu">
+      @for (subitem of currentSubmenu; track subitem) {
+      <button mat-menu-item>
+        <mat-icon>{{ subitem.icon }}</mat-icon>
+        <span>{{ subitem.label }}</span>
+      </button>
+      }
+    </mat-menu>
+  </div>
+
+  <div class="navbar-actions">
+    <button mat-icon-button matTooltip="Notifications" class="nav-action">
+      <mat-icon>notifications</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Profile" class="nav-action">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+    <button mat-icon-button matTooltip="Logout" class="nav-action">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

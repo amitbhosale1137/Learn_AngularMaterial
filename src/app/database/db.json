@@ -3,11 +3,18 @@
     {
       "name": "Rajesh",
       "email": "rajesh@coned.com",
-      "salary": 258000,
+      "salary": 258258,
       "department": "Marketing",
       "phone": "12345678901",
       "location": "Chicago",
       "id": "8cb3"
+    },
+    {
+      "id": "69ff",
+      "name": "Amit",
+      "email": "amit@gmail.com",
+      "salary": 124560,
+      "department": "Sales"
     }
   ]
 }

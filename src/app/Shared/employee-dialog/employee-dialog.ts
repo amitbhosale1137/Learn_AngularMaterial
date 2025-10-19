@@ -38,23 +38,23 @@ export class EmployeeDialogComponent {
     'Product',
   ];
 
-  locations = [
-    'New York',
-    'Los Angeles',
-    'Chicago',
-    'Houston',
-    'Phoenix',
-    'Philadelphia',
-    'San Antonio',
-    'San Diego',
-    'Dallas',
-    'San Jose',
-    'Austin',
-    'Seattle',
-    'Denver',
-    'Boston',
-    'Miami',
-  ];
+  // locations = [
+  //   'New York',
+  //   'Los Angeles',
+  //   'Chicago',
+  //   'Houston',
+  //   'Phoenix',
+  //   'Philadelphia',
+  //   'San Antonio',
+  //   'San Diego',
+  //   'Dallas',
+  //   'San Jose',
+  //   'Austin',
+  //   'Seattle',
+  //   'Denver',
+  //   'Boston',
+  //   'Miami',
+  // ];
 
   constructor(
     private fb: FormBuilder,
@@ -66,8 +66,8 @@ export class EmployeeDialogComponent {
       email: ['', [Validators.required, Validators.email]],
       salary: ['', [Validators.required, Validators.min(0)]],
       department: ['', Validators.required],
-      phone: ['', [Validators.required, Validators.pattern(/^[+]?[0-9-]{10,}$/)]],
-      location: ['', Validators.required],
+      // phone: ['', [Validators.required, Validators.pattern(/^[+]?[0-9-]{10,}$/)]],
+      // location: ['', Validators.required],
     });
 
     if (data) {

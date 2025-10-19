@@ -2,12 +2,13 @@ import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { ApiService, Employee } from '../../services/api.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+
 import { ReusableTableComponent, ColumnDef } from '../../Shared/reusable-table/reusable-table';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDialog } from '@angular/material/dialog';
 import { EmployeeDialogComponent } from '../../Shared/employee-dialog/employee-dialog';
+import { NotificationService } from '../../services/notification.service';
 
 @Component({
   selector: 'app-employee',
@@ -25,17 +26,14 @@ export class EmployeeComponent implements OnInit {
   tableData: any[] = [];
 
   columnDefs: ColumnDef[] = [
-    { key: 'id', label: 'ID' },
     { key: 'name', label: 'Name' },
     { key: 'email', label: 'Email' },
     { key: 'salary', label: 'Salary' },
-    { key: 'phone', label: 'Phone' },
     { key: 'department', label: 'Department' },
-    { key: 'location', label: 'Location' },
   ];
 
   apiService = inject(ApiService);
-  snackBar = inject(MatSnackBar);
+  notificationService = inject(NotificationService);
   dialog = inject(MatDialog);
 
   ngOnInit(): void {
@@ -46,10 +44,10 @@ export class EmployeeComponent implements OnInit {
     this.apiService.getData().subscribe({
       next: (res) => {
         this.tableData = res;
-        this.showSuccess('Data loaded Successfully !!!');
+        this.notificationService.showSuccess('Employee loaded successfully!');
       },
-      error: (err) => {
-        this.showError('Error while loading Api');
+      error: () => {
+        this.notificationService.showError('Error while loading Api');
       },
     });
   }
@@ -70,11 +68,11 @@ export class EmployeeComponent implements OnInit {
   createEmployee(employee: Employee): void {
     this.apiService.createEmployee(employee).subscribe({
       next: () => {
-        this.showSuccess('Employee created successfully!');
+        this.notificationService.showSuccess('Employee created successfully!');
         this.loadEmployees();
       },
       error: () => {
-        this.showError('Error creating employee');
+        this.notificationService.showError('Error creating employee');
       },
     });
   }
@@ -95,11 +93,11 @@ export class EmployeeComponent implements OnInit {
   updateEmployee(id: string, employee: Employee): void {
     this.apiService.updateEmployee(id, employee).subscribe({
       next: () => {
-        this.showSuccess('Employee updated successfully!');
+        this.notificationService.showSuccess('Employee updated successfully!');
         this.loadEmployees();
       },
       error: () => {
-        this.showError('Error updating employee');
+        this.notificationService.showError('Error updating employee');
       },
     });
   }
@@ -108,30 +106,15 @@ export class EmployeeComponent implements OnInit {
     if (confirm('Are you sure you want to delete this employee?')) {
       this.apiService.deleteEmployee(id).subscribe({
         next: () => {
-          this.showSuccess('Employee deleted successfully!');
+          this.notificationService.showSuccess('Employee deleted successfully!');
           this.loadEmployees();
         },
         error: () => {
-          this.showError('Error deleting employee');
+          this.notificationService.showError('Error deleting employee');
         },
       });
     }
   }
 
-  showError(message: string): void {
-    this.snackBar.open(message, 'X', {
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-      panelClass: ['danger-snackbar'],
-    });
-  }
 
-  showSuccess(message: string): void {
-    this.snackBar.open(message, 'X', {
-      horizontalPosition: 'center',
-      verticalPosition: 'top',
-      duration: 1000,
-      panelClass: ['success-snackbar'],
-    });
-  }
 }

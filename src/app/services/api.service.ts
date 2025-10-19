@@ -9,8 +9,6 @@ export interface Employee {
   email: string;
   salary: number;
   department: string;
-  phone: string;
-  location: string;
 }
 
 @Injectable({
