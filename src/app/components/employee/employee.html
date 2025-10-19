@@ -1,15 +1,22 @@
 <div class="container">
     <mat-card>
         <mat-card-header>
-            <h2>Employee List</h2>
+            <div class="header-container">
+                <h2>Employee List</h2>
+                <button mat-flat-button (click)="openAddDialog()">
+                    <mat-icon>add</mat-icon>
+                    Add Employee
+                </button>
+            </div>
         </mat-card-header>
         
         <mat-card-content>
             <app-reusable-table 
                 [data]="tableData" 
                 [columnDefs]="columnDefs"
-                [pageSize]="10"
-                [pageSizeOptions]="[5, 10, 15]">
+                [hasActions]="true"
+                (editAction)="editEmployee($event)"
+                (deleteAction)="deleteEmployee($event)">
             </app-reusable-table>
         </mat-card-content>
     </mat-card>
