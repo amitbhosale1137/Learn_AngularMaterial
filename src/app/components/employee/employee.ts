@@ -1,26 +1,30 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
-import { MatTableDataSource, MatTableModule } from '@angular/material/table';
-import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
-import { MatSort, MatSortModule } from '@angular/material/sort';
-import { ApiService } from '../services/api.service';
+import { ApiService } from '../../services/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { ReusableTableComponent, ColumnDef } from '../../Shared/reusable-table/reusable-table';
 
 @Component({
   selector: 'app-employee',
-  imports: [CommonModule, MatCardModule, MatTableModule, MatPaginatorModule, MatSortModule],
+  imports: [CommonModule, MatCardModule, ReusableTableComponent],
   templateUrl: './employee.html',
   styleUrl: './employee.scss',
 })
 export class EmployeeComponent implements OnInit {
-  dataSource = new MatTableDataSource<any>();
-  columnsToDisplay: string[] = ['id', 'title', 'body'];
+  tableData: any[] = [];
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  constructor(private apiService: ApiService, private snackBar: MatSnackBar) {}
+  columnDefs: ColumnDef[] = [
+    { key: 'id', label: 'ID' },
+    { key: 'name', label: 'Name' },
+    { key: 'salary', label: 'Salary' },
+    { key: 'phone', label: 'Phone' },
+    { key: 'department', label: 'Department' },
+    { key: 'location', label: 'Location' },
+  ];
+  
+  apiService = inject(ApiService);
+  snackBar = inject(MatSnackBar);
 
   ngOnInit(): void {
     this.getUsers();
@@ -29,33 +33,29 @@ export class EmployeeComponent implements OnInit {
   getUsers() {
     this.apiService.getData().subscribe({
       next: (res) => {
-        this.dataSource.data = res;
-        this.dataSource.paginator = this.paginator;
-        this.dataSource.sort = this.sort;
-        this.showSuccess("Data loaded Successfully !!!");
+        this.tableData = res;
+        this.showSuccess('Data loaded Successfully !!!');
       },
       error: (err) => {
-        this.showError("Error while loading Api");
+        this.showError('Error while loading Api');
       },
     });
   }
 
   showError(message: string): void {
-    this.snackBar.open(message,'X',{
-      horizontalPosition:'center',
+    this.snackBar.open(message, 'X', {
+      horizontalPosition: 'center',
       verticalPosition: 'top',
-      panelClass: ['danger-snackbar']
-    })
-    
+      panelClass: ['danger-snackbar'],
+    });
   }
 
   showSuccess(message: string): void {
-    this.snackBar.open(message,'X',{
-      horizontalPosition:'center',
+    this.snackBar.open(message, 'X', {
+      horizontalPosition: 'center',
       verticalPosition: 'top',
-      duration:1000,
-      panelClass: ['success-snackbar']
-    })
-    
+      duration: 1000,
+      panelClass: ['success-snackbar'],
+    });
   }
 }
