@@ -1,5 +1,6 @@
 import { Injectable, inject } from '@angular/core';
-import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
+import { MatSnackBar, MatSnackBarConfig, MatSnackBarRef } from '@angular/material/snack-bar';
+import { ConfirmationSnackComponent, ConfirmationSnackData } from '../Shared/confirmation-snack';
 
 @Injectable({ providedIn: 'root' })
 export class NotificationService {
@@ -22,6 +23,20 @@ export class NotificationService {
       verticalPosition: 'top',
       horizontalPosition: 'end',
       panelClass: ['success-snackbar'],
+    });
+  }
+
+  showConfirmation(message: string, confirmText: string, cancelText: string): MatSnackBarRef<ConfirmationSnackComponent> {
+    return this.snackBar.openFromComponent(ConfirmationSnackComponent, {
+      horizontalPosition: 'center',
+      verticalPosition: 'top',
+      data: {
+        message,
+        confirmText,
+        cancelText,
+      } satisfies ConfirmationSnackData,
+      duration: undefined,
+      panelClass: ['confirmation-snackbar'],
     });
   }
 

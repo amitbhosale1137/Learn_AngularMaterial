@@ -1,20 +1,18 @@
 {
   "employees": [
     {
-      "name": "Rajesh",
-      "email": "rajesh@coned.com",
-      "salary": 258258,
-      "department": "Marketing",
-      "phone": "12345678901",
-      "location": "Chicago",
-      "id": "8cb3"
-    },
-    {
-      "id": "69ff",
       "name": "Amit",
       "email": "amit@gmail.com",
       "salary": 124560,
-      "department": "Sales"
+      "department": "Finance",
+      "id": "69ff"
+    },
+    {
+      "id": "b564",
+      "name": "Ajay",
+      "email": "ajay@gmail.com",
+      "salary": 147852,
+      "department": "Engineering"
     }
   ]
 }

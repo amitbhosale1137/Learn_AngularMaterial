@@ -105,7 +105,17 @@ export class EmployeeComponent implements OnInit {
   }
 
   deleteEmployee(id: string): void {
-    if (confirm('Are you sure you want to delete this employee?')) {
+    const snackRef = this.notificationService.showConfirmation(
+      'Are you sure you want to delete this employee?',
+      'Ok',
+      'Cancel'
+    );
+
+    snackRef.afterDismissed().subscribe((result) => {
+      if (!result.dismissedByAction) {
+        return;
+      }
+
       this.apiService.deleteEmployee(id).subscribe({
         next: () => {
           this.notificationService.showSuccess('Employee deleted successfully!');
@@ -115,7 +125,7 @@ export class EmployeeComponent implements OnInit {
           this.notificationService.showError('Error deleting employee');
         },
       });
-    }
+    });
   }
 
 

@@ -62,6 +62,13 @@ html {
     ));
 }
 
+.confirmation-snackbar {
+  @include mat.snack-bar-overrides((
+    container-color: #ce1515,
+    button-color: #ffffff
+    ));
+}
+
 
 .tertiary {
   @include mat.theme((color: theme.$tertiary-palette));
