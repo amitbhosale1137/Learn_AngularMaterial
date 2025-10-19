@@ -15,6 +15,18 @@ html {
   }
 }
 
+.edit-icon {
+  @include mat.icon-overrides((
+    color: green,
+  ));
+}
+
+.delete-icon {
+  @include mat.icon-overrides((
+    color: red,
+  ));
+}
+
 .success-snackbar {
   @include mat.snack-bar-overrides((
     container-color: #28a745, 
