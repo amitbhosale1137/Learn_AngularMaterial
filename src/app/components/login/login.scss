@@ -1,0 +1,17 @@
+.login-card {
+  width: min(400px, 100%);
+  margin: 3rem auto;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.login-title {
+  margin: 0 0 1rem;
+  text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
