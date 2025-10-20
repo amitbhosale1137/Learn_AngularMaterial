@@ -32,16 +32,8 @@ export class NavComponent {
   currentSubmenu: MenuItem[] | undefined;
 
   menuItems: MenuItem[] = [
-    { label: 'Login', icon: 'login', route: '/' },
-    { label: 'Home', icon: 'home', route: '/home' },
-    { label: 'Employees', icon: 'people', route: '/employees' },
+
     
-    // { label: 'Components', icon: 'widgets', submenu: [
-    //   { label: 'Buttons', icon: 'smart_button' },
-    //   { label: 'Forms', icon: 'description' },
-    //   { label: 'Tables', icon: 'table_chart' }
-    // ]},
-    // { label: 'Settings', icon: 'settings', route: '/settings' },
-    // { label: 'About', icon: 'info', route: '/about' }
+    { label: 'Employees', icon: 'people', route: '/employees' }
   ];
 }
