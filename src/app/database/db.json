@@ -14,5 +14,37 @@
       "salary": 147852,
       "department": "Engineering"
     }
+  ],
+  "users": [
+    {
+      "name": "Anil",
+      "email": "ajay@gmail.com",
+      "id": "f1a3"
+    },
+    {
+      "name": "Amit",
+      "email": "amit@gmail.com",
+      "id": "05f8"
+    },
+    {
+      "name": "Priya",
+      "email": "priya@gmail.com",
+      "id": "96ff"
+    },
+    {
+      "name": "Alen",
+      "email": "Alen@gmail.com",
+      "id": "dccd"
+    },
+    {
+      "name": "Raj",
+      "email": "raj@gmail.com",
+      "id": "3e99"
+    },
+    {
+      "name": "Ramesh",
+      "email": "Ramesh@gmail.com",
+      "id": "f439"
+    }
   ]
 }

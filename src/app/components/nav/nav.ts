@@ -23,17 +23,16 @@ interface MenuItem {
     MatIconModule,
     MatMenuModule,
     MatTooltipModule,
-    RouterLink
+    RouterLink,
   ],
   templateUrl: './nav.html',
-  styleUrl: './nav.scss'
+  styleUrl: './nav.scss',
 })
 export class NavComponent {
   currentSubmenu: MenuItem[] | undefined;
 
   menuItems: MenuItem[] = [
-
-    
-    { label: 'Employees', icon: 'people', route: '/employees' }
+    { label: 'Employees', icon: 'badge', route: '/employees' },
+    { label: 'Users', icon: 'people', route: '/signal' },
   ];
 }
