@@ -17,7 +17,7 @@ export interface ConfirmationSnackData {
     <div class="confirmation-snack">
       <span class="message">{{ data.message }}</span>
       <div class="actions">
-        <button mat-flat-button type="button" (click)="onCancel()">
+        <button mat-flat-button class="error" type="button" (click)="onCancel()">
           {{ data.cancelText }}
         </button>
         <button mat-flat-button type="button" (click)="onConfirm()">
@@ -30,6 +30,7 @@ export interface ConfirmationSnackData {
     `
       .confirmation-snack {
         display: flex;
+        overflow: hidden;
         align-items: center;
         gap: 1rem;
       }

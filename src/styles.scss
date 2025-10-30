@@ -63,10 +63,19 @@ html {
 }
 
 .confirmation-snackbar {
+
   @include mat.snack-bar-overrides((
-    container-color: #ce1515,
-    button-color: #ffffff
+    container-color: #1b1c1b,
+    button-color: #ffffff,
     ));
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 999;
 }
 
 
