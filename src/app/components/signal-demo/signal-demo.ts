@@ -3,16 +3,35 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { SignalService } from '../../services/signal.service';
 import { CommonModule } from '@angular/common';
 import { NavComponent } from '../nav/nav';
+import { ColumnDef, ReusableTableComponent } from '../../Shared/reusable-table/reusable-table';
+import { MatDialog } from '@angular/material/dialog';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInput } from '@angular/material/input';
 
 @Component({
   selector: 'app-signal-demo',
-  imports: [CommonModule, ReactiveFormsModule, NavComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    NavComponent,
+    ReusableTableComponent,
+    MatButtonModule,
+    MatInput,
+  ],
   templateUrl: './signal-demo.html',
   styleUrl: './signal-demo.scss',
 })
 export class SignalDemo {
+  tableData: any[] = [];
+
+  columnDefs: ColumnDef[] = [
+    { key: 'name', label: 'Name' },
+    { key: 'email', label: 'Email' },
+  ];
+
   userService = inject(SignalService);
   fb = inject(FormBuilder);
+  dialog = inject(MatDialog);
 
   form = this.fb.group({
     name: ['', Validators.required],

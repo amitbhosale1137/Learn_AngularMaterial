@@ -1,26 +1,13 @@
 <app-nav></app-nav>
-<h2>👤 User Management</h2>
+<h2 style="text-align: center;">👤 User Management</h2>
 
-<button (click)="userService.reload()">🔄 Reload Users</button>
+
 @if (userService.isLoading()) {
-    <p>Loading users...</p>
+<p>Loading users...</p>
 }
 @if (userService.error()) {
-    <p>{{ userService.error() }}</p>
+<p>{{ userService.error() }}</p>
 }
-
-<ul>
-    @for (user of userService.users(); track user.id) {
-        <li>
-            {{ user.name }} ({{ user.email }})
-            <button (click)="editUser(user)">✏️ Edit</button>
-            <button (click)="deleteUser(user.id)">🗑 Delete</button>
-        </li>
-    }
-</ul>
-
-
-<hr />
 
 <form [formGroup]="form" (ngSubmit)="saveUser()">
     <h3>{{ selectedUserId ? 'Edit User' : 'Create New User' }}</h3>
@@ -28,21 +15,26 @@
     <label>Name:</label>
     <input formControlName="name" />
     @if (form.controls.name.invalid && form.controls.name.touched) {
-        <div>
-            ⚠️ Name is required.
-        </div>
+    <div>
+        ⚠️ Name is required.
+    </div>
     }
 
     <label>Email:</label>
-    <input formControlName="email" />
+    <input matInput formControlName="email" />
     @if (form.controls.email.invalid && form.controls.email.touched) {
-        <div>
-            ⚠️ Valid email required.
-        </div>
+    <div>
+        ⚠️ Valid email required.
+    </div>
     }
 
-    <button type="submit" [disabled]="form.invalid">
+    <button mat-flat-button type="submit" [disabled]="form.invalid">
         {{ selectedUserId ? 'Update' : 'Create' }}
     </button>
-    <button type="button" (click)="resetForm()">Cancel</button>
+    <button mat-flat-button type="button" (click)="resetForm()">Cancel</button>
 </form>
+<hr />
+
+<app-reusable-table [data]="userService.users()" [columnDefs]="columnDefs" [hasActions]="true"
+    (editAction)="editUser($event)" (deleteAction)="deleteUser($event)">
+</app-reusable-table>
