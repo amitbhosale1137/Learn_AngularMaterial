@@ -1,10 +1,11 @@
 import { Component, computed, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { NgStyle } from '@angular/common';
+import { NavComponent } from '../nav/nav';
 
 @Component({
   selector: 'app-contact-signal',
-  imports: [NgStyle],
+  imports: [NgStyle, NavComponent],
   templateUrl: './contact-signal.html',
   styleUrl: './contact-signal.scss',
 })

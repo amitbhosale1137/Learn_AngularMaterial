@@ -1,4 +1,5 @@
 <!-- contact-form.component.html -->
+<app-nav></app-nav>
 <form (submit)="submitForm(); $event.preventDefault()">
     <label>Name:</label>
     <input #nameInput [value]="name()" (input)="name.set(nameInput.value)" />
@@ -14,9 +15,9 @@
 
 <!-- ✅ Success message using @if -->
 @if (showSuccess()) {
-    <div style="margin-top: 10px; color: green;">
-        ✅ Your message has been sent successfully!
-    </div>
+<div style="margin-top: 10px; color: green;">
+    ✅ Your message has been sent successfully!
+</div>
 }
 
 <!-- 🎨 Conditional styling for form validity -->
