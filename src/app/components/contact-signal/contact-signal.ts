@@ -1,11 +1,24 @@
 import { Component, computed, signal } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { NgStyle } from '@angular/common';
+import { CommonModule, NgStyle } from '@angular/common';
 import { NavComponent } from '../nav/nav';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-contact-signal',
-  imports: [NgStyle, NavComponent],
+  imports: [
+    NavComponent,
+    CommonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatCardModule,
+    MatIconModule,
+  ],
   templateUrl: './contact-signal.html',
   styleUrl: './contact-signal.scss',
 })

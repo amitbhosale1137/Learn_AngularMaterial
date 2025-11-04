@@ -1,40 +1,56 @@
 <app-nav></app-nav>
-<h2 style="text-align: center;">👤 User Management</h2>
+
+<h2 class="mat-headline text-center">👤 User Management</h2>
+
+<div class="container">
+    <mat-card>
+        <mat-card-content>
+            @if (userService.isLoading()) {
+            <mat-progress-spinner mode="indeterminate"></mat-progress-spinner>
+            } @else {
+            @if (userService.error()) {
+            <mat-error>{{ userService.error() }}</mat-error>
+            } @else {
+            <form [formGroup]="form" (ngSubmit)="saveUser()" class="form-layout">
+                <h3 class="mat-subheading-2">{{ selectedUserId ? 'Edit User' : 'Create New User' }}</h3>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" />
+                    @if (form.controls.name.invalid && form.controls.name.touched) {
+                    <mat-error>⚠️ Name is required.</mat-error>
+                    }
+                </mat-form-field>
+
+                <mat-form-field appearance="outline" class="full-width">
+                    <mat-label>Email</mat-label>
+                    <input matInput formControlName="email" />
+                    @if (form.controls.email.invalid && form.controls.email.touched) {
+                    <mat-error>⚠️ Valid email required.</mat-error>
+                    }
+                </mat-form-field>
+
+                <div class="button-group">
+                    <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid">
+                        {{ selectedUserId ? 'Update' : 'Create' }}
+                    </button>
+                    <button mat-flat-button color="warn" type="button" (click)="resetForm()">Cancel</button>
+                </div>
+            </form>
+            }
+            }
+        </mat-card-content>
+    </mat-card>
+
+    <mat-divider></mat-divider>
 
 
-@if (userService.isLoading()) {
-<p>Loading users...</p>
-}
-@if (userService.error()) {
-<p>{{ userService.error() }}</p>
-}
 
-<form [formGroup]="form" (ngSubmit)="saveUser()">
-    <h3>{{ selectedUserId ? 'Edit User' : 'Create New User' }}</h3>
-
-    <label>Name:</label>
-    <input formControlName="name" />
-    @if (form.controls.name.invalid && form.controls.name.touched) {
-    <div>
-        ⚠️ Name is required.
-    </div>
+    @if (userService.users().length > 0) {
+    <app-reusable-table [data]="userService.users()" [columnDefs]="columnDefs" [hasActions]="true"
+        (editAction)="editUser($event)" (deleteAction)="deleteUser($event)">
+    </app-reusable-table>
+    } @else {
+    <p class="mat-body-2 text-center">📭 No user data available.</p>
     }
-
-    <label>Email:</label>
-    <input matInput formControlName="email" />
-    @if (form.controls.email.invalid && form.controls.email.touched) {
-    <div>
-        ⚠️ Valid email required.
-    </div>
-    }
-
-    <button mat-flat-button type="submit" [disabled]="form.invalid">
-        {{ selectedUserId ? 'Update' : 'Create' }}
-    </button>
-    <button mat-flat-button type="button" (click)="resetForm()">Cancel</button>
-</form>
-<hr />
-
-<app-reusable-table [data]="userService.users()" [columnDefs]="columnDefs" [hasActions]="true"
-    (editAction)="editUser($event)" (deleteAction)="deleteUser($event)">
-</app-reusable-table>
+</div>
