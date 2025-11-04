@@ -34,5 +34,6 @@ export class NavComponent {
   menuItems: MenuItem[] = [
     { label: 'Employees', icon: 'badge', route: '/employees' },
     { label: 'Users', icon: 'people', route: '/signal' },
+    { label: 'Contact', icon: 'people', route: '/contact-signal' },
   ];
 }

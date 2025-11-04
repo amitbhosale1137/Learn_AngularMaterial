@@ -13,4 +13,9 @@ export const routes: Routes = [
     path: 'signal',
     loadComponent: () => import('./components/signal-demo/signal-demo').then((m) => m.SignalDemo),
   },
+  {
+    path: 'contact-signal',
+    loadComponent: () =>
+      import('./components/contact-signal/contact-signal').then((m) => m.ContactSignal),
+  },
 ];

@@ -15,6 +15,14 @@
       "department": "Engineering"
     }
   ],
+  "posts": [
+    {
+      "id": "58e6",
+      "name": "Amit",
+      "email": "amit@ups.com",
+      "message": "Hi There"
+    }
+  ],
   "users": [
     {
       "name": "Anil",
@@ -45,6 +53,21 @@
       "name": "Ramesh",
       "email": "Ramesh@gmail.com",
       "id": "f439"
+    },
+    {
+      "id": "4d32",
+      "name": "aaaa",
+      "email": "aaa@ss.com"
+    },
+    {
+      "id": "3a67",
+      "name": "bb",
+      "email": "bbb@g.com"
+    },
+    {
+      "id": "46cc",
+      "name": "ccc",
+      "email": "ccc@g.com"
     }
   ]
 }
