@@ -1,23 +1,24 @@
-<!-- Navigation Bar -->
 <mat-toolbar class="navbar">
+  <!-- Brand -->
   <div class="navbar-brand">
     <mat-icon class="logo">dashboard</mat-icon>
     <span class="app-title">Admin Dashboard</span>
   </div>
 
+  <!-- Menu Items -->
   <div class="navbar-menu">
     @for (item of menuItems; track item) {
     <button mat-button class="nav-item" [matMenuTriggerFor]="item.submenu ? submenu : null"
       [routerLink]="!item.submenu ? item.route : null" (mouseenter)="currentSubmenu = item.submenu">
       <mat-icon>{{ item.icon }}</mat-icon>
-      <span class="nav-label">{{ item.label }}</span>
+      <span class="nav-label">{{ item.label | translate }}</span>
       @if (item.submenu) {
       <mat-icon class="submenu-arrow">arrow_drop_down</mat-icon>
       }
     </button>
     }
 
-    <!-- Single Submenu Template -->
+    <!-- Submenu -->
     <mat-menu #submenu="matMenu">
       @for (subitem of currentSubmenu; track subitem) {
       <button mat-menu-item>
@@ -28,8 +29,18 @@
     </mat-menu>
   </div>
 
-  <div class="navbar-actions">
-   
+  <!-- Actions -->
+  <div class="navbar-actions" style="display: flex; align-items: center; gap: 16px;">
+    <!-- Language Dropdown -->
+    <mat-form-field appearance="fill" style="width: 200px; ">
+      <mat-select [(value)]="selectedLang" (selectionChange)="translateText($event.value)">
+        <mat-option *ngFor="let lang of languages" [value]="lang.code">
+          {{ lang.label }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <!-- Profile & Logout -->
     <button mat-icon-button matTooltip="Profile" class="nav-action">
       <mat-icon>account_circle</mat-icon>
     </button>

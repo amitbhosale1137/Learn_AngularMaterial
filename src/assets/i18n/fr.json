@@ -1,0 +1,13 @@
+{
+    "hello": "Bonjour",
+    "welcome": "Bienvenue dans notre application !",
+    "menu": {
+        "employees": "Employés",
+        "users": "Utilisateurs",
+        "contact": "Contact",
+        "language": "Langue"
+    },
+    "language": {
+        "choose": "Choisissez votre langue"
+    }
+}

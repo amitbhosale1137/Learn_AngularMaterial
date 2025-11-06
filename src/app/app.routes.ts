@@ -18,4 +18,8 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./components/contact-signal/contact-signal').then((m) => m.ContactSignal),
   },
+  {
+    path: 'multi-Lang',
+    loadComponent: () => import('./components/mutli-lang/mutli-lang').then((m) => m.MutliLang),
+  },
 ];

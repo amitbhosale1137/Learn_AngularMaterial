@@ -1,0 +1,12 @@
+{
+    "menu": {
+        "employees": "कर्मचारी",
+        "users": "वापरकर्ते",
+        "contact": "संपर्क",
+        "language": "भाषा"
+    },
+    "hello": "नमस्कार",
+    "language": {
+        "choose": "आपली भाषा निवडा"
+    }
+}

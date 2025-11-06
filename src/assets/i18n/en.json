@@ -1,0 +1,13 @@
+{
+    "hello": "Hello",
+    "welcome": "Welcome to our app!",
+    "menu": {
+        "employees": "Employees",
+        "users": "Users",
+        "contact": "Contact",
+        "language": "Language"
+    },
+    "language": {
+        "choose": "Choose Your Language"
+    }
+}

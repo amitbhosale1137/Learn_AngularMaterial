@@ -1,0 +1,15 @@
+<app-nav></app-nav>
+
+<div class="container" style="text-align: center; margin-top: 40px;">
+    <h2 style="margin-bottom: 30px;">🌍 {{'language.choose'|translate}}</h2>
+
+    <div style="display: flex; justify-content: center; gap: 20px; margin-bottom: 40px;">
+        <button mat-flat-button color="primary" (click)="translateText('en')">English</button>
+        <button mat-flat-button color="accent" (click)="translateText('fr')">French</button>
+        <button mat-flat-button color="warning" (click)="translateText('ma')">मराठी</button>
+    </div>
+
+    <div style="font-size: 24px; font-weight: 500; color: #333;">
+        {{ 'hello' | translate }}
+
+    </div>
